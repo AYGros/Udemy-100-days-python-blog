@@ -10,10 +10,14 @@ from forms import CreatePostForm, CreateUserForm, LoginForm, CommentForm
 from flask_gravatar import Gravatar
 from functools import wraps
 import os
-
+from dotenv import load_dotenv #pip install python-dotenv
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ['MY_KEY']
+
+load_dotenv()
+SECRET_KEY = os.getenv('MY_KEY')
+app.config['SECRET_KEY'] = SECRET_KEY
+
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
