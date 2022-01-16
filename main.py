@@ -87,7 +87,7 @@ class Comment(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey("blog_posts.id"))
     commented_post = relationship("BlogPost", back_populates="post_comments")
 
-db.create_all()
+#db.create_all()
 
 #make decorator function to restrict certain routes to admin (user with id 1) only
 def admin_only(f):
