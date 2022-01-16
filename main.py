@@ -15,14 +15,14 @@ from dotenv import load_dotenv #pip install python-dotenv
 app = Flask(__name__)
 #use the key stored in .env file
 load_dotenv()
-SECRET_KEY = os.getenv('MY_KEY')
-app.config['SECRET_KEY'] = SECRET_KEY
+#SECRET_KEY = os.getenv('MY_KEY')
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY") #version using .env file: SECRET_KEY
 
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
 ##CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL") # old version with just SQLite 'sqlite:///blog.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
