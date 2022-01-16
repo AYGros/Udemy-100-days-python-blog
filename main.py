@@ -13,7 +13,7 @@ import os
 from dotenv import load_dotenv #pip install python-dotenv
 
 app = Flask(__name__)
-
+#use the key stored in .env file
 load_dotenv()
 SECRET_KEY = os.getenv('MY_KEY')
 app.config['SECRET_KEY'] = SECRET_KEY
